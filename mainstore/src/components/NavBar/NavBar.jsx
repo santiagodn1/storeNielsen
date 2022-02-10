@@ -1,5 +1,6 @@
 import React from 'react';
-import './navBar.css'
+import './NavBar.css'
+import { Carrito } from './Carrito/Carrito'
 
 function NavBar() {
     return (
@@ -8,7 +9,7 @@ function NavBar() {
                 <ul>
                     <li>
                         <a href="#">
-                            <img className="iconoNav" src="https://statics.glamit.com.ar/skin/frontend/default/fila16/images/filanew_dark.svg" alt="placeholder" />
+                            <img className="iconoNav" src="https://statics.glamit.com.ar/skin/frontend/default/fila16/images/filanew_dark.svg" alt="logo" />
                         </a></li>
                     <li><a href="#">Novedades</a></li>
                     <li><a href="#">Sneakers</a></li>
@@ -16,6 +17,7 @@ function NavBar() {
                     <li><a href="#">Tennis</a></li>
                     <li><a href="#">Ojotas</a></li>
                     <li><a className="sale" href="#">SALE</a></li>
+                    <li><Carrito /></li>
                 </ul>
             </nav>
         </header>

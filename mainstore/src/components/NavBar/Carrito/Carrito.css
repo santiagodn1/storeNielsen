@@ -1,0 +1,13 @@
+.carritoCompleto{
+    border: red solid 2px;
+    border-radius: 20%;
+}
+.carritoUnidades {
+    font-size: 25px;
+    color: black;
+  }
+
+  .imagenCarrito {
+    margin: 5px 0px 5px 0px;
+    width: 40px;
+  }

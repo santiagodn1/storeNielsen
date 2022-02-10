@@ -1,10 +1,15 @@
 import './App.css';
-import NavBar from './components/navBar'
+import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ListaProductos/ListaProductos';
+import React from 'react';
 
 
 function App() {
   return (
-    <NavBar />
+    <React.Fragment>
+      <NavBar />
+      <ItemListContainer />
+    </React.Fragment>
   );
 }
 
