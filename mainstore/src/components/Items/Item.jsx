@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 import React from 'react'
 import './Item.css'
 
@@ -19,11 +20,11 @@ function Item() {
             <div className="cardBase"><Card.Img className="cardImagen" variant="top" src={u.pictureUrl} />
                 <Card.Body className="cardBody">
                     <Card.Title ><b>{u.nombre}</b></Card.Title>
-                    <Card.Text>
-                        <ul>{u.estilo}</ul>
-                        <ul>{u.genero}</ul>
-                        <p><ul><b>${u.price}</b></ul></p>
-                    </Card.Text>
+                    <ListGroup variant="flush">
+                        <ListGroup.Item>{u.estilo}</ListGroup.Item>
+                        <ListGroup.Item>{u.genero}</ListGroup.Item>
+                        <ListGroup.Item><b>${u.price}</b></ListGroup.Item>
+                    </ListGroup>
                     <ItemCount stock={u.stock} initial="0" />
                 </Card.Body></div>
         </Card >)
