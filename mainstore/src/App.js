@@ -9,7 +9,6 @@ function App() {
     <React.Fragment>
       <NavBar />
       <ItemListContainer greetings="Bienvenido al nuestra tienda OnLine" />
-
     </React.Fragment>
   );
 }

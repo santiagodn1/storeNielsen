@@ -7,3 +7,20 @@ h1 {
     color: white;
   }
 
+h2 {
+    text-align: center;
+    color: black
+}
+  
+  .grid-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    ". . ."; 
+    justify-content: center; 
+    align-content: center; 
+    justify-items: center; 
+    align-items: center; 
+}
