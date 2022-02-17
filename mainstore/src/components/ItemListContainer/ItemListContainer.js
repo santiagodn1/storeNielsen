@@ -1,37 +1,40 @@
-import React from 'react';
+import { useState, useEffect } from 'react'
+import { traerProductos } from '../../data/data'
 import './ItemListContainer.css'
-import { useState } from 'react';
 import ItemList from '../Items/ItemList';
 
 
-function ItemListContainer({ greetings }) {
+const ItemListContainer = ({ greetings }) => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const [listadoProductos, setListadoProductos] = useState([])
-
-    const productosPromise = new Promise((resolve, reject) => {
-
-        setTimeout(() => {
-            resolve(true)
-        }, 3000);
-    })
-    productosPromise.then(function () {
-        setListadoProductos(false);
-    })
+    useEffect(() => {
+        traerProductos
+            .then((res) => {
+                setProducts(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, []);
 
     return (
-
-        <><h1>{greetings}</h1>
-            {listadoProductos ? (
+        <>
+            {loading ? (
                 <h2>cargando listado de productos...</h2>
             ) : (
-                <div className="grid-container">
-                    {ItemList}
-                </div>
+                <>
+                    <h1>{greetings}</h1>
+
+                    <ItemList products={products} />
+
+                </>
             )}
         </>
-
-    )
-}
-
+    );
+};
 
 export default ItemListContainer;
