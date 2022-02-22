@@ -1,15 +1,20 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from './components/Home/Home'
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 
 
 function App() {
   return (
-    <React.Fragment>
+    <BrowserRouter>
       <NavBar />
-      <ItemListContainer greetings="Bienvenido al nuestra tienda OnLine" />
-    </React.Fragment>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route exact path="/ItemDetails/:id" element={<ItemDetailContainer />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

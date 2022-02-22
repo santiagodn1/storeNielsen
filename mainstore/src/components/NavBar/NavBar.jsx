@@ -8,7 +8,7 @@ function NavBar() {
             <nav className="nav">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <img className="iconoNav" src="https://statics.glamit.com.ar/skin/frontend/default/fila16/images/filanew_dark.svg" alt="logo" />
                         </a></li>
                     <li><a href="#">Novedades</a></li>

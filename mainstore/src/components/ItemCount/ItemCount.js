@@ -20,11 +20,11 @@ function ItemCount({ stock, initial, onAdd }) {
         <div>
             <div>
                 <p>{count}</p>
-                <button onClick={AumentarMonto}>
-                    +
-                </button>
                 <button onClick={DisminuirMonto}>
                     -
+                </button>
+                <button onClick={AumentarMonto}>
+                    +
                 </button>
             </div>
             <div>

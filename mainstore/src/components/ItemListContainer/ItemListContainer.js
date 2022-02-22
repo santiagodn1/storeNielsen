@@ -4,7 +4,7 @@ import './ItemListContainer.css'
 import ItemList from '../Items/ItemList';
 
 
-const ItemListContainer = ({ greetings }) => {
+export const ItemListContainer = ({ greetings }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -24,10 +24,10 @@ const ItemListContainer = ({ greetings }) => {
     return (
         <>
             {loading ? (
-                <h2>cargando listado de productos...</h2>
+                <h2 class="cargando">cargando listado de productos...</h2>
             ) : (
                 <>
-                    <h1>{greetings}</h1>
+                    <h1 class="greetings">{greetings}</h1>
 
                     <ItemList products={products} />
 
@@ -36,5 +36,3 @@ const ItemListContainer = ({ greetings }) => {
         </>
     );
 };
-
-export default ItemListContainer;
