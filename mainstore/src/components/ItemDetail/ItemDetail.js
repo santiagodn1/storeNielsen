@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom"
+import ItemCount from "../ItemCount/ItemCount";
 import './ItemDetail.css';
 
-export const ItemDetail = ({ id, nombre, estilo, genero, price, pictureUrl }) => {
+export const ItemDetail = ({ id, nombre, estilo, genero, price, stock, pictureUrl }) => {
   return (
     <div class="wrapper">
       <div class="product-img">
-        <img src={pictureUrl} />
+        <img src={pictureUrl} alt="Preview" />
       </div>
       <div class="product-info">
         <div class="product-text">
@@ -13,8 +14,9 @@ export const ItemDetail = ({ id, nombre, estilo, genero, price, pictureUrl }) =>
           <h2 class="detalleDetail">{estilo}</h2>
           <h2 class="detalleDetail">{genero}</h2>
           <p class="precioDetail">${price}</p>
+
           <div class="product-price-btn">
-            <button type="button">Añadir al carro</button>
+            <ItemCount class="asd" stock={stock} initial="1" />
           </div>
         </div>
 

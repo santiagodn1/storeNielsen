@@ -1,16 +1,62 @@
 
 
 .cardBase{
+    border-radius: 40px 0 40px 0;
     width: '18rem';
-    border:solid 1px black;
+    border:solid 2px black;
+    background: black;
+    color: white;
+    transition: all .3s;
 }
 
 
 .cardBody{
+    border-radius: 40px 0 40px 0;
     text-align: center;
 }
 
 .cardImagen{
+    border-radius: 38px 0 0 0;
     width:100%;
     height:100%
 }
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 1.8rem;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    font-family: inherit;
+   }
+   
+   .btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    transform: translateX(-100%);
+    transition: all .3s;
+    z-index: -1;
+   }
+   
+   .btn:hover::before {
+    transform: translateX(0);
+    height: 100%;
+   }
+
+
+   .cardBase:hover {
+    transition: all .3s;
+    box-shadow: 0px 0px 7px 0px black;
+   }

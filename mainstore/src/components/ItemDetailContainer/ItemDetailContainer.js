@@ -24,9 +24,10 @@ export const ItemDetailContainer = () => {
                 console.log(error);
             })
             .finally(() => {
-                setLoading(false);
+                setLoading();
             });
     }, []);
+
 
 
     return (

@@ -6,20 +6,22 @@ import ItemCount from '../../components/ItemCount/ItemCount';
 
 const Item = ({ id, nombre, estilo, genero, price, stock, pictureUrl }) => {
     return (
-        <Link to={`/ItemDetails/${id}`}>
-            <Card key={id} style={{ width: '18rem' }}>
-                <div className="cardBase"><Card.Img className="cardImagen" variant="top" src={pictureUrl} />
-                    <Card.Body className="cardBody">
-                        <Card.Title ><b>{nombre}</b></Card.Title>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>{estilo}</ListGroup.Item>
-                            <ListGroup.Item>{genero}</ListGroup.Item>
-                            <ListGroup.Item><b>${price}</b></ListGroup.Item>
-                        </ListGroup>
-                        <ItemCount stock={stock} initial="1" />
-                    </Card.Body></div>
-            </Card >
-        </Link>
+
+        <Card key={id} style={{ width: '18rem' }}>
+            <div className="cardBase"><Card.Img className="cardImagen" variant="top" src={pictureUrl} />
+                <Card.Body className="cardBody">
+                    <Card.Title ><b>{nombre}</b></Card.Title>
+                    <ListGroup variant="flush">
+                        <ListGroup.Item>{estilo}</ListGroup.Item>
+                        <ListGroup.Item>{genero}</ListGroup.Item>
+                        <ListGroup.Item><b>${price}</b></ListGroup.Item>
+                    </ListGroup>
+                    <Link to={`/ItemDetails/${id}`}>
+                        <a class="btn" href="#">Ver detalles</a>
+                    </Link>
+                </Card.Body>
+            </div>
+        </Card >
     );
 };
 export default Item;

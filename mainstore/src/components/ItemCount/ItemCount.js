@@ -1,3 +1,4 @@
+import './ItemCount.css'
 import { useState } from 'react'
 import React from 'react';
 
@@ -17,21 +18,12 @@ function ItemCount({ stock, initial, onAdd }) {
     }
 
     return (
+
         <div>
-            <div>
-                <p>{count}</p>
-                <button onClick={DisminuirMonto}>
-                    -
-                </button>
-                <button onClick={AumentarMonto}>
-                    +
-                </button>
-            </div>
-            <div>
-                <button>
-                    Agregar al Carro
-                </button>
-            </div>
+            <div class="countValue">{count}</div>
+            <span class="pqt-minus" onClick={DisminuirMonto}>-</span>
+            <span class="pqt-add" onClick={void (0)}>Agregar al carro</span>
+            <span class="pqt-plus" onClick={AumentarMonto}>+</span>
         </div>
     )
 }
