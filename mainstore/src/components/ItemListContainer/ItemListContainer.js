@@ -4,9 +4,16 @@ import './ItemListContainer.css'
 import ItemList from '../Items/ItemList';
 
 
-export const ItemListContainer = ({ greetings }) => {
+export const ItemListContainer = ({ }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const greetings = "Bienvenido a nuestra tienda Online"
+
+
+    const productsSneakers = products.filter(zapatilla => zapatilla.estilo == "Sneakers");
+    const productsTraining = products.filter(zapatilla => zapatilla.estilo == "Training");
+    const productsTennis = products.filter(zapatilla => zapatilla.estilo == "Tennis");
+    const productsOjotas = products.filter(zapatilla => zapatilla.estilo == "Ojotas");
 
     useEffect(() => {
         traerProductos
@@ -24,12 +31,15 @@ export const ItemListContainer = ({ greetings }) => {
     return (
         <>
             {loading ? (
-                <h2 class="cargando">cargando listado de productos...</h2>
+                <h2 className="greetings">cargando listado de productos...</h2>
             ) : (
                 <>
-                    <h1 class="greetings">{greetings}</h1>
+                    <h1 className="greetings">{greetings}</h1>
 
-                    <ItemList products={products} />
+                    <ItemList products={productsSneakers} />
+                    <ItemList products={productsTraining} />
+                    <ItemList products={productsTennis} />
+                    <ItemList products={productsOjotas} />
 
                 </>
             )}

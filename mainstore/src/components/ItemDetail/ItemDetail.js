@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom"
 import ItemCount from "../ItemCount/ItemCount";
 import './ItemDetail.css';
 
-export const ItemDetail = ({ id, nombre, estilo, genero, price, stock, pictureUrl }) => {
+export const ItemDetail = ({ nombre, estilo, genero, price, stock, pictureUrl }) => {
   return (
     <div class="wrapper">
       <div class="product-img">
