@@ -15,7 +15,7 @@ export const ItemDetail = ({ nombre, estilo, genero, price, stock, pictureUrl })
           <p class="precioDetail">${price}</p>
 
           <div class="product-price-btn">
-            <ItemCount class="asd" stock={stock} initial="1" />
+            <ItemCount stock={stock} initial="1" />
           </div>
         </div>
 

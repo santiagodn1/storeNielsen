@@ -25,6 +25,19 @@
   border: solid 1px black;
 }
 
+.pqt-add-resized {
+  background: #fff;
+  border: none;
+  font-size: 19px;
+  padding: 0 20px;
+  width: 150px;
+  border-radius: 10px;
+  height: 50px;
+  user-select: none; 
+  line-height: 50px;
+  border: solid 1px black;
+}
+
 .pqt-plus:hover,
 .pqt-minus:hover {
   background: #202431;
@@ -32,7 +45,8 @@
   cursor: pointer;
 }
 
-.pqt-add:hover {
+.pqt-add:hover,
+.pqt-add-resized:hover {
     background: #202431;
     color: #fff;
     cursor: pointer;
@@ -41,3 +55,4 @@
   .countValue{
       font-size: 30px;
   }
+
