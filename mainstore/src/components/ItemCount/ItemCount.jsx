@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ItemCount = ({ stock, initial, onAdd }) => {
 
-    const [Btn, setBtn] = useState("AddOn")
+    const [boton, setBoton] = useState("AddOn")
 
 
     const [count, setCount] = useState(parseInt(initial))
@@ -24,7 +24,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     const BtnAddOn = () => {
         const agregarCarrito = () => {
-            setBtn("carrito")
+            setBoton("carrito")
             setCount(false)
         }
         return (
@@ -35,7 +35,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     const BtnCarrito = () => {
         return (
-            <Link to={"/Carrito"}>
+            <Link to={"/Cart"}>
                 <span className="pqt-add-resized">Finalizar Compra</span>
             </Link>
         )
@@ -47,7 +47,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         <div>
 
             <span className="pqt-minus" onClick={DisminuirMonto}>-</span>
-            {Btn === "AddOn" ? <BtnAddOn /> : <BtnCarrito />}
+            {boton === "AddOn" ? <BtnAddOn /> : <BtnCarrito />}
             <span className="pqt-plus" onClick={AumentarMonto}>+</span>
             <div className="countValue">{count}
             </div>
@@ -56,5 +56,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     )
 }
 export default ItemCount
+
 
 

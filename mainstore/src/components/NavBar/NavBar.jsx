@@ -15,7 +15,7 @@ function NavBar() {
                     <li><a href="/category/training">Training</a></li>
                     <li><a href="/category/tennis">Tennis</a></li>
                     <li><a href="/category/ojotas">Ojotas</a></li>
-                    <li><CartWidget /></li>
+                    <li><a href="/Cart"><CartWidget /></a></li>
                 </ul>
             </nav>
         </header>
