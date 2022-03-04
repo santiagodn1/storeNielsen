@@ -1,11 +1,15 @@
 .grid-container {
     display: grid; 
-    margin-bottom: 40px;
+
+    grid-auto-flow: column dense; 
     grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr; 
-    gap: 0px 0px; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 5px 5px; 
     grid-template-areas: 
-    ". . ."; 
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."; 
     justify-content: center; 
     align-content: center; 
     justify-items: center; 

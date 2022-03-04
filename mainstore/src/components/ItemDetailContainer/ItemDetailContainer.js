@@ -1,45 +1,41 @@
-import React from "react";
-import { productos } from "../../data/data";
+import { Productos } from "../../data/data";
 import { useState, useEffect } from 'react'
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 
-export const ItemDetailContainer = () => {
+const ItemDetailContainer = () => {
+
     const { id } = useParams();
 
-    const [myDetail, setMyDetail] = useState([])
-    const [loading, setLoading] = useState(true);
+    const [myDetail, setMyDetail] = useState()
 
-    const getDetail = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(productos)
-        }, 2000);
-    })
+    const getItemId = () => {
+        let item = Productos.find((e) => {
+            return e.id === Number(id);
+        })
+    }
+
 
     useEffect(() => {
-        getDetail.then((details) => {
-            setMyDetail(details);
-        })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading();
-            });
-    }, []);
 
+        const getDetail = new Promise((resolve, reject) => {
+            resolve(Productos)
+        })
+
+        getDetail.then((details) => {
+
+            let getId = details.find((e) => {
+                return e.id === Number(id)
+            })
+
+            setMyDetail(getId);
+        })
+    }, [])
 
 
     return (
-        <>
-            {loading ? (
-                <h2>cargando producto individual...</h2>
-            ) : (
+        <ItemDetail {...myDetail} />
 
-                <div>
-                    <ItemDetail {...myDetail[id - 1]} />
-                </div>
-            )}
-        </>
-    );
+    )
 }
+export default ItemDetailContainer;

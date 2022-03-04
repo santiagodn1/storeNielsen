@@ -1,12 +1,12 @@
 import Item from './Item'
 import './ItemList.css'
 
-const ItemList = ({ products }) => {
+const ItemList = ({ Productos }) => {
     return (
         <div className='grid-container'>
-            {products.map((product) => (
-                <Item {...product} key={product.id} />
-            ))}
+            {
+                Productos.map((prods) => (<Item {...prods} key={prods.id} />))
+            }
         </div>
     );
 };

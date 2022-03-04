@@ -1,27 +1,36 @@
 import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 import './ItemDetail.css';
+import React, { useState } from "react"
 
 export const ItemDetail = ({ nombre, estilo, genero, price, stock, pictureUrl }) => {
+
+
+  const [carrito, setCarrito] = useState(0);
+
+  const handleItemCount = (e) => {
+    setCarrito(e)
+  }
+
+
   return (
-    <div class="wrapper">
-      <div class="product-img">
+    <div className="wrapper">
+      <div className="product-img">
         <img src={pictureUrl} alt="Preview" />
       </div>
-      <div class="product-info">
-        <div class="product-text">
-          <h1 class="nombreDetail">{nombre}</h1>
-          <h2 class="detalleDetail">{estilo}</h2>
-          <h2 class="detalleDetail">{genero}</h2>
-          <p class="precioDetail">${price}</p>
+      <div className="product-info">
+        <div className="product-text">
+          <h1 className="nombreDetail">{nombre}</h1>
+          <h2 className="detalleDetail">{estilo}</h2>
+          <h2 className="detalleDetail">{genero}</h2>
+          <p className="precioDetail">${price}</p>
 
-          <div class="product-price-btn">
-            <ItemCount stock={stock} initial="1" />
+          <div className="product-price-btn">
+            {carrito === 0 ? <ItemCount initial={1} stock={stock} onAdd={(e) => handleItemCount(e)} /> : <> <Link to={"/Cart"}><span className="pqt-add">Finalizar Compra</span></Link><div>Unidades añadidas al carro</div></>}
           </div>
         </div>
-
       </div>
     </div>
   )
 }
-
 

@@ -11,9 +11,9 @@ import moveon from '../assets/productos/moveon.png'
 import axilus from '../assets/productos/axilus.png'
 import energized from '../assets/productos/energized.png'
 
-export const productos = [
+export const Productos = [
     {
-        id: '1',
+        id: 1,
         nombre: "Zapatillas Sparky Black",
         estilo: "Training",
         genero: "Hombre",
@@ -22,7 +22,7 @@ export const productos = [
         pictureUrl: SparkyBlack
     },
     {
-        id: '2',
+        id: 2,
         nombre: "Zapatillas Ray",
         estilo: "Sneakers",
         genero: "Hombre",
@@ -31,7 +31,7 @@ export const productos = [
         pictureUrl: Ray
     },
     {
-        id: '3',
+        id: 3,
         nombre: "Zapatillas Ace Clay",
         estilo: "Tennis",
         genero: "Mujer",
@@ -40,7 +40,7 @@ export const productos = [
         pictureUrl: AceClay
     },
     {
-        id: '4',
+        id: 4,
         nombre: "Ojotas Drifter",
         estilo: "Ojotas",
         genero: "Unisex",
@@ -49,7 +49,7 @@ export const productos = [
         pictureUrl: OjotasDrifter
     },
     {
-        id: '5',
+        id: 5,
         nombre: "Ojotas Drifter Blue",
         estilo: "Ojotas",
         genero: "Unisex",
@@ -58,7 +58,7 @@ export const productos = [
         pictureUrl: OjotasDrifterBlue
     },
     {
-        id: '6',
+        id: 6,
         nombre: "Ojotas Drifter White",
         estilo: "Ojotas",
         genero: "Unisex",
@@ -67,7 +67,7 @@ export const productos = [
         pictureUrl: OjotasDrifterWhite
     },
     {
-        id: '7',
+        id: 7,
         nombre: "Zapatillas Arcade",
         estilo: "Sneakers",
         genero: "Hombre",
@@ -76,7 +76,7 @@ export const productos = [
         pictureUrl: arcade
     },
     {
-        id: '8',
+        id: 8,
         nombre: "Zapatillas Disruptor",
         estilo: "Sneakers",
         genero: "Mujer",
@@ -85,7 +85,7 @@ export const productos = [
         pictureUrl: disruptor
     },
     {
-        id: '8',
+        id: 9,
         nombre: "Zapatillas Move On",
         estilo: "Training",
         genero: "Mujer",
@@ -94,7 +94,7 @@ export const productos = [
         pictureUrl: extase
     },
     {
-        id: '8',
+        id: 10,
         nombre: "Zapatillas Extase Pink",
         estilo: "Training",
         genero: "Mujer",
@@ -103,7 +103,7 @@ export const productos = [
         pictureUrl: moveon
     },
     {
-        id: '3',
+        id: 11,
         nombre: "Zapatillas Axilus",
         estilo: "Tennis",
         genero: "Hombre",
@@ -112,7 +112,7 @@ export const productos = [
         pictureUrl: axilus
     },
     {
-        id: '3',
+        id: 12,
         nombre: "Zapatillas Energized",
         estilo: "Tennis",
         genero: "Hombre",
@@ -124,6 +124,6 @@ export const productos = [
 
 export const traerProductos = new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve(productos);
+        resolve(Productos);
     }, 4000);
 });

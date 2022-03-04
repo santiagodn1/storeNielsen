@@ -1,48 +1,45 @@
+import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
-import { traerProductos } from '../../data/data'
+import { Productos } from '../../data/data'
 import './ItemListContainer.css'
 import ItemList from '../Items/ItemList';
 
+export const ItemListContainer = () => {
+    const greetings = "Bienvenido a nuestra tienda OnLine"
+    const category = useParams();
 
-export const ItemListContainer = ({ }) => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const greetings = "Bienvenido a nuestra tienda Online"
+    const [myProducts, setMyProducts] = useState([]);
 
 
-    const productsSneakers = products.filter(zapatilla => zapatilla.estilo == "Sneakers");
-    const productsTraining = products.filter(zapatilla => zapatilla.estilo == "Training");
-    const productsTennis = products.filter(zapatilla => zapatilla.estilo == "Tennis");
-    const productsOjotas = products.filter(zapatilla => zapatilla.estilo == "Ojotas");
+    const getProductos = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(Productos)
+        }, 2000);
+
+    })
 
     useEffect(() => {
-        traerProductos
-            .then((res) => {
-                setProducts(res);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
+        getProductos.then((data) => {
+            if (category.Tipo == undefined) {
+                setMyProducts(data)
+            } else {
+                let filter = data.filter(e => e.Tipo == category.Tipo)
+                setMyProducts(filter);
+            }
+
+        })
+            .catch(error => { console.log(error) })
+
+    }, [myProducts])
 
     return (
         <>
-            {loading ? (
-                <h2 className="greetings">cargando listado de productos...</h2>
-            ) : (
-                <>
-                    <h1 className="greetings">{greetings}</h1>
 
-                    <ItemList products={productsSneakers} />
-                    <ItemList products={productsTraining} />
-                    <ItemList products={productsTennis} />
-                    <ItemList products={productsOjotas} />
+            <h1 className="greetings">{greetings}</h1>
 
-                </>
-            )}
+            <ItemList Productos={myProducts} />
+
+
         </>
     );
 };
