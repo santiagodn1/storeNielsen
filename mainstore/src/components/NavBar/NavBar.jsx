@@ -12,9 +12,9 @@ export const NavBar = () => {
             <nav className="nav">
                 <ul>
                     <li>
-                        <a href="/">
+                        <Link to="/">
                             <img className="iconoNav" src="https://statics.glamit.com.ar/skin/frontend/default/fila16/images/filanew_dark.svg" alt="logo" />
-                        </a></li>
+                        </Link></li>
                     <li><Link to={"/category/sneakers"}>Sneakers</Link></li>
                     <li><Link to={"/category/training"}>Training</Link></li>
                     <li><Link to={"/category/tennis"}>Tennis</Link></li>

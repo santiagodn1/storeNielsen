@@ -4,7 +4,6 @@ import React from 'react';
 
 
 const ItemCount = ({ stock, initial, onAdd }) => {
-
     const [count, setCount] = useState(parseInt(initial))
 
 

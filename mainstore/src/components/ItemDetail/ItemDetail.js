@@ -2,14 +2,18 @@ import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import './ItemDetail.css';
 import React, { useState } from "react"
+import { useContext } from "react";
+import { CartContext } from "../../Context";
 
-export const ItemDetail = ({ nombre, estilo, genero, price, stock, pictureUrl }) => {
+export const ItemDetail = ({ id, nombre, estilo, genero, price, stock, pictureUrl }) => {
 
 
   const [carrito, setCarrito] = useState(0);
 
-  const handleItemCount = (e) => {
-    setCarrito(e)
+  const { addItem } = useContext(CartContext)
+  const handleItemCount = (stockagregado) => {
+    addItem({ id, nombre, estilo, genero, price, stock, stockagregado, pictureUrl }, setCarrito(stockagregado))
+
   }
 
 
@@ -26,7 +30,7 @@ export const ItemDetail = ({ nombre, estilo, genero, price, stock, pictureUrl })
           <p className="precioDetail">${price}</p>
 
           <div className="product-price-btn">
-            {carrito === 0 ? <ItemCount initial={1} stock={stock} onAdd={(e) => handleItemCount(e)} /> : <> <Link to={"/Cart"}><span className="pqt-add">Finalizar Compra</span></Link><div>Unidades añadidas al carro</div></>}
+            {carrito === 0 ? <ItemCount initial={1} stock={stock} onAdd={(stockagregado) => handleItemCount(stockagregado)} /> : <> <Link to={"/Cart"}><span className="pqt-add">Finalizar Compra</span></Link><div>Unidades añadidas al carro</div></>}
           </div>
         </div>
       </div>
