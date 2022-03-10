@@ -1,22 +1,35 @@
-import { Productos } from "../../data/data";
+//import { Productos } from "../../data/data";
+import React from 'react';
 import { useState, useEffect } from 'react'
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../utils/firebase";
 
 const ItemDetailContainer = () => {
 
     const { id } = useParams();
 
-    const [myDetail, setMyDetail] = useState()
+    const [selectedItem, setSelectedItem] = useState()
+    const [load, setLoad] = useState(true)
 
-    const getItemId = () => {
-        let item = Productos.find((e) => {
-            return e.id === Number(id);
-        })
+    const getSelected = async () => {
+        try {
+            const document = doc(db, "items", id)
+            const response = await getDoc(document)
+            const result = { id: response.id, ...response.data() }
+            setSelectedItem(result)
+            setLoad(false)
+        } catch (error) {
+            console.warn("error", error)
+        }
     }
 
-
     useEffect(() => {
+        getSelected()
+    }, [id])
+
+    /*useEffect(() => {
 
         const getDetail = new Promise((resolve, reject) => {
             resolve(Productos)
@@ -32,9 +45,9 @@ const ItemDetailContainer = () => {
         })
     }, [])
 
-
+*/
     return (
-        <ItemDetail {...myDetail} />
+        <ItemDetail {...selectedItem} />
 
     )
 }

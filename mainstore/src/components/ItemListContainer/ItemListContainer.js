@@ -1,43 +1,55 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
-import { Productos } from '../../data/data'
+//import { Productos } from '../../data/data'
 import './ItemListContainer.css'
 import ItemList from '../Items/ItemList';
+import { db } from "../../utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
+
 
 export const ItemListContainer = () => {
     const greetings = "Bienvenido a nuestra tienda OnLine"
-    const category = useParams();
 
-    const [myProducts, setMyProducts] = useState([]);
+    const { categoryId } = useParams();
+
+    //const [prodFiltrados, setprodFiltrados] = useState([])
+    const [items, setItems] = useState([]);
+    const [load, setLoad] = useState(true)
 
 
-    const getProductos = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(Productos)
-        }, 2000);
+    const getData = async () => {
+        try {
+            const itemsCollection = collection(db, "items")
+            const col = await getDocs(itemsCollection)
+            const result = col.docs.map((doc) => doc = { id: doc.id, ...doc.data() })
+            setItems(result)
+            setLoad(false)
+        } catch (error) {
+            console.warn("error", error)
+        }
+    }
 
-    })
+    const getDataCategory = async () => {
+        try {
+            const itemsCollection = collection(db, "items")
+            const col = await getDocs(itemsCollection)
+            const result = col.docs.map((doc) => doc = { id: doc.id, ...doc.data() })
+            setItems(result.filter(e => e.id === categoryId))
+            setLoad(false)
+        } catch (error) {
+            console.warn("error", error)
+        }
+    }
 
     useEffect(() => {
-        getProductos.then((data) => {
-            if (category.Tipo == undefined) {
-                setMyProducts(data)
-            } else {
-                let filter = data.filter(e => e.Tipo == category.Tipo)
-                setMyProducts(filter);
-            }
-
-        })
-            .catch(error => { console.log(error) })
-
-    }, [myProducts])
-
+        categoryId ? getDataCategory() : getData()
+    }, [categoryId])
     return (
         <>
 
             <h1 className="greetings">{greetings}</h1>
 
-            <ItemList Productos={myProducts} />
+            <ItemList Productos={items} />
 
 
         </>

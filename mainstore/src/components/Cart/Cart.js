@@ -4,31 +4,12 @@ import { CartContext } from '../../Context';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css'
-import { db } from '../../utils/firebase';
+
 
 
 const Cart = () => {
     const { cartItems, removeItems, cantidadTotal, vaciarCarro, precioFinal } = useContext(CartContext);
 
-    const [productos, setProductos] = useState([])
-    useEffect(() => {
-        const getData = async () => {
-            const query = collection(db, 'items');
-            const response = await getDocs(query);
-            const dataItems = response.docs.map(doc => { return { id: doc.id, ...doc.data() } });
-            setProductos(dataItems);
-            console.log('dataItems', dataItems)
-            const queryDoc = doc(db, 'items', 'HISkcfJMuzLkwpzSKy4R')
-            const responseDoc = await getDoc(queryDoc);
-            const dataDoc = responseDoc.data();
-            console.log('dataDoc', dataDoc)
-            console.log('id', responseDoc.id)
-
-        }
-
-        getData();
-
-    }, [])
 
     return (
         <>
@@ -56,12 +37,12 @@ const Cart = () => {
                                         {prod.nombre}
                                     </div>
 
-                                    <div class="counter">
+                                    <div className="counter">
                                         <div className="pqt-minus">-</div>
                                         <div className="pqt-add">{prod.stockagregado}</div>
                                         <div className="pqt-plus">+</div>
                                     </div>
-                                    <div class="prices">
+                                    <div className="prices">
                                         <div className="amount">{prod.price}</div>
 
                                         <div className="remove" onClick={() => removeItems(prod)}><u>Quitar producto</u></div>
@@ -73,15 +54,15 @@ const Cart = () => {
 
                     }))}
                     <hr></hr>
-                    <div class="checkout">
-                        <div class="total">
+                    <div className="checkout">
+                        <div className="total">
                             <div>
-                                <div class="Subtotal">Sub-Total</div>
-                                <div class="items">Productos {cantidadTotal}</div>
+                                <div className="Subtotal">Sub-Total</div>
+                                <div className="items">Productos {cantidadTotal}</div>
                             </div>
-                            <div class="total-amount">$ {precioFinal}</div>
+                            <div className="total-amount">$ {precioFinal}</div>
                         </div>
-                        <button class="button">Finalizar Compra</button>
+                        <button className="button">Finalizar Compra</button>
                     </div>
 
                 </div>
