@@ -34,7 +34,7 @@ export const ItemListContainer = () => {
             const itemsCollection = collection(db, "items")
             const col = await getDocs(itemsCollection)
             const result = col.docs.map((doc) => doc = { id: doc.id, ...doc.data() })
-            setItems(result.filter(e => e.id === categoryId))
+            setItems(result.filter(e => e.estilo === categoryId))
             setLoad(false)
         } catch (error) {
             console.warn("error", error)
@@ -44,6 +44,8 @@ export const ItemListContainer = () => {
     useEffect(() => {
         categoryId ? getDataCategory() : getData()
     }, [categoryId])
+
+    console.log("ITEMS:", items)
     return (
         <>
 

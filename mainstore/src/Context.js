@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
     const [cartCount, setCartCount] = useState(0);
 
 
-    const addItem = (item, amount) => {
+    const addItem = (item) => {
         if (cartItems.some((product) => product.id === item.id)) {
             const copy = [...cartItems];
             const repeatItemIndex = cartItems.findIndex(
@@ -17,15 +17,15 @@ export const CartProvider = ({ children }) => {
             );
             copy[repeatItemIndex] = {
                 ...copy[repeatItemIndex],
-                amount: copy[repeatItemIndex].amount + amount,
+                stockagregado: copy[repeatItemIndex].stockagregado + item.stockagregado,
             };
 
             setCartItems(copy);
-            setCartCount((prev) => prev + amount);
+            setCartCount((prev) => prev + item.stockagregado);
 
         } else {
-            setCartItems([...cartItems, { ...item, amount }]);
-            setCartCount((prev) => prev + amount);
+            setCartItems([...cartItems, { ...item }]);
+            setCartCount((prev) => prev + item.stockagregado);
 
         }
     };

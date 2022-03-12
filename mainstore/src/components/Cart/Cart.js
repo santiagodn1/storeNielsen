@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+
 import React, { useEffect } from 'react';
 import { CartContext } from '../../Context';
 import { useContext, useState } from 'react';
@@ -7,8 +7,28 @@ import './Cart.css'
 
 
 
+
 const Cart = () => {
     const { cartItems, removeItems, cantidadTotal, vaciarCarro, precioFinal } = useContext(CartContext);
+
+    const sendOrder = (e) => {
+        e.preventDefault();
+        console.log(e.target[0].value)
+        let order = {
+            buyer: {
+                name: e.target[0].value,
+                phone: "+123456789",
+                email: "santiagodn3@gmail.com"
+            },
+            items: cartItems,
+            total: cartItems.reduce((acc, i) => (acc + (i.items.price * i.quantity)), 0)
+        }
+        console.log('order', order)
+
+    }
+
+
+
 
 
     return (
@@ -63,6 +83,10 @@ const Cart = () => {
                             <div className="total-amount">$ {precioFinal}</div>
                         </div>
                         <button className="button">Finalizar Compra</button>
+                        <form onSubmit={sendOrder}>
+                            <input type="text" placeholder="Nombre" />
+                            <button type="submit">Enviar</button>
+                        </form>
                     </div>
 
                 </div>

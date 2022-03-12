@@ -12,7 +12,9 @@ export const ItemDetail = ({ id, nombre, estilo, genero, price, stock, pictureUr
 
   const { addItem } = useContext(CartContext)
   const handleItemCount = (stockagregado) => {
-    addItem({ id, nombre, estilo, genero, price, stock, stockagregado, pictureUrl }, setCarrito(stockagregado))
+    addItem({ id, nombre, estilo, genero, price, stock, stockagregado, pictureUrl })
+
+    setCarrito(stockagregado)
 
   }
 
