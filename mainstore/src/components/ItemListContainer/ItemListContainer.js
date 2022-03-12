@@ -11,6 +11,7 @@ export const ItemListContainer = () => {
     const greetings = "Bienvenido a nuestra tienda OnLine"
 
     const { categoryId } = useParams();
+    console.log(categoryId)
 
     //const [prodFiltrados, setprodFiltrados] = useState([])
     const [items, setItems] = useState([]);
