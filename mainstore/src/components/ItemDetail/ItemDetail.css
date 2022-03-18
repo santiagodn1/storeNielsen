@@ -55,7 +55,7 @@
   color: #474747;
 }
 
-span {
+.span {
   display: inline-block;
   height: 50px;
   font-family: 'Suranna', serif;
@@ -76,4 +76,7 @@ span {
 
 .pqt-add{
   font-size: 18px;
+  display: inline-block;
+  height: 50px;
+  font-family: 'Suranna', serif;
 }

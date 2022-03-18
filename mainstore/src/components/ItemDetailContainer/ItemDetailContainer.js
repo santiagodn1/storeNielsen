@@ -29,23 +29,6 @@ const ItemDetailContainer = () => {
         getSelected()
     }, [id])
 
-    /*useEffect(() => {
-
-        const getDetail = new Promise((resolve, reject) => {
-            resolve(Productos)
-        })
-
-        getDetail.then((details) => {
-
-            let getId = details.find((e) => {
-                return e.id === Number(id)
-            })
-
-            setMyDetail(getId);
-        })
-    }, [])
-
-*/
     return (
         <ItemDetail {...selectedItem} />
 
