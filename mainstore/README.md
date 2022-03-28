@@ -2,7 +2,7 @@ Este proyecto fue armado para el curso de ReactJS de Coderhouse.
 
 # Tienda FILA | Coderhouse
 
-https://github.com/santiagodn1/storeNielsen/blob/main/mainstore/src/assets/Video/demo.gif
+![Alt Text](https://github.com/santiagodn1/storeNielsen/blob/main/mainstore/src/assets/Video/demo.gif)
 
 El proyecto se baso principalmente en hacer un clon de la tienda oficial de FILA
 
