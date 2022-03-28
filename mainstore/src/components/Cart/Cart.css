@@ -162,3 +162,34 @@ hr{
     font-weight: 600;
     color: #202020;
    }
+
+
+.valorProducto{
+        background: linear-gradient(-45deg, #B8D7FF, #8EB7EB, #B8D7FF);
+        background-size: 800% 400%;
+        padding: 1em 2em;
+        display: inline-block;
+        border: none;
+        border-radius: 10px;
+        font-size: 17px;
+        font-weight: 700;
+        color: white;
+        transition: all .5s ease-in-out;
+        animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
+        color: black;
+       }
+       
+       
+       @keyframes gradient {
+        0% {
+         background-position: 0% 50%;
+        }
+       
+        50% {
+         background-position: 100% 50%;
+        }
+       
+        100% {
+         background-position: 0% 50%;
+        }
+       }

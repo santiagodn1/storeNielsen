@@ -2,7 +2,7 @@
 import React from 'react';
 import { CartContext } from '../../Context';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { db } from '../../utils/firebase';
 import './Cart.css'
 import { collection, addDoc } from 'firebase/firestore';
@@ -10,13 +10,8 @@ import { Timestamp } from 'firebase/firestore';
 import Swal from 'sweetalert2'
 
 
-
-
 const Cart = () => {
     const { cartItems, removeItems, cantidadTotal, vaciarCarro, precioFinal } = useContext(CartContext);
-
-
-
     const mostrarAlerta = async () => {
         const { value: e } = await Swal.fire({
             title: 'Ingrese sus datos',
@@ -48,7 +43,6 @@ const Cart = () => {
                 total: precioFinal,
             }
             const queryCollection = collection(db, 'orders')
-            console.log('order', order)
 
 
             if (order.buyer.direccion !== "" && order.buyer.email !== "" && order.buyer.name !== "" && order.buyer.telefono !== "") {
@@ -58,7 +52,7 @@ const Cart = () => {
                     title: '¡Orden Realizada!',
                     text: "Su número de pedido es: " + docRef.id
                 })
-                removeItems()
+                vaciarCarro()
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -70,7 +64,9 @@ const Cart = () => {
 
         }
 
+
     }
+
 
 
     return (
@@ -93,16 +89,15 @@ const Cart = () => {
                             <React.Fragment key={prod.id}>
                                 <div className="Cart-Items" >
                                     <div className="image-box">
-                                        <img src={prod.pictureUrl} style={{ height: "300px" }} alt="imagen" />
+                                        <NavLink to={`/itemDetails/${prod.id}`}>
+                                            <img src={prod.pictureUrl} style={{ height: "300px" }} alt="imagen" />
+                                        </NavLink>
                                     </div>
                                     <div className="about">
                                         {prod.nombre}
                                     </div>
-
                                     <div className="counter">
-                                        <div className="pqt-minus">-</div>
-                                        <div className="pqt-add">{prod.stockagregado}</div>
-                                        <div className="pqt-plus">+</div>
+                                        <div className="valorProducto">Unidades: {prod.stockagregado}</div>
                                     </div>
                                     <div className="prices">
                                         <div className="amount">{prod.price}</div>

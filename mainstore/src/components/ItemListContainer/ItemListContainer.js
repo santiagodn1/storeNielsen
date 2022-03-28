@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
-//import { Productos } from '../../data/data'
 import './ItemListContainer.css'
 import ItemList from '../Items/ItemList';
 import { db } from "../../utils/firebase";
@@ -11,11 +10,10 @@ export const ItemListContainer = () => {
     const greetings = "Bienvenido a nuestra tienda OnLine"
 
     const { categoryId } = useParams();
-    console.log(categoryId)
 
     //const [prodFiltrados, setprodFiltrados] = useState([])
     const [items, setItems] = useState([]);
-    const [load, setLoad] = useState(true)
+    const [setLoad] = useState(true)
 
 
     const getData = async () => {
@@ -46,7 +44,6 @@ export const ItemListContainer = () => {
         categoryId ? getDataCategory() : getData()
     }, [categoryId])
 
-    console.log("ITEMS:", items)
     return (
         <>
 
