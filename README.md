@@ -18,7 +18,6 @@ node.js - entorno de tiempo de ejecución de JavaScript, indispensable para pode
 
 ```
 git clone https://github.com/santiagodn1/storeNielsen
-cd storeNielsen
 ```
 
 2 - Instalar la versión de npm recomendada:
